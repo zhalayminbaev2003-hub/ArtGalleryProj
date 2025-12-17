@@ -1,13 +1,21 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main() {
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    IO.println(String.format("Hello and welcome!"));
+public class Main {
+    public static void main(String[] args){
+        Artist artist1 = new Artist("Leonardo Da Vinchi", "Italy");
+        Artist artist2 = new Artist("Adilkhan Kasteev", "Kazakh");
 
-    for (int i = 1; i <= 5; i++) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        IO.println("i = " + i);
+        ArtGallery mygall = new ArtGallery("Louvre","Paris");
+
+        Artwork art1 = new Artwork("Mona Lisa",1503,8000000,artist1);
+        Artwork art2 = new Artwork("Kazakh Dalasy",1953,50000,artist2);
+        art1.displayInfo();
+
+        System.out.println("Salystyru");
+        if (art1.getPrice() > art2.getPrice()){
+            System.out.println("Mona Liza is expensive");
+        }
+
+        if (art1.getArtist() ==art2.getArtist()){
+            System.out.println("This art have same Artist");
+        }
     }
 }

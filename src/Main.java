@@ -1,21 +1,30 @@
+import java.util.List;
+
 public class Main {
-    public static void main(String[] args){
-        Artist artist1 = new Artist("Leonardo Da Vinchi", "Italy");
-        Artist artist2 = new Artist("Adilkhan Kasteev", "Kazakh");
+    public static void main(String[] args) {
+        ArtGallery myGallery = new ArtGallery("Astana Art");
 
-        ArtGallery mygall = new ArtGallery("Louvre","Paris");
+        Artist artist1 = new Artist("Van Gogh", "Netherlands");
+        Artist artist2 = new Artist("Da Vinci", "Italy");
 
-        Artwork art1 = new Artwork("Mona Lisa",1503,8000000,artist1);
-        Artwork art2 = new Artwork("Kazakh Dalasy",1953,50000,artist2);
-        art1.displayInfo();
+        myGallery.addArtwork(new Painting("Starry Night", artist1, 100000, "Oil"));
+        myGallery.addArtwork(new Painting("Mona Lisa", artist2, 850000, "Oil"));
+        myGallery.addArtwork(new Sculpture("David", new Artist("Michelangelo", "Italy"), 200000, 5000));
 
-        System.out.println("Salystyru");
-        if (art1.getPrice() > art2.getPrice()){
-            System.out.println("Mona Liza is expensive");
-        }
+        System.out.println("All Artworks ");
+        myGallery.printGallery();
 
-        if (art1.getArtist() ==art2.getArtist()){
-            System.out.println("This art have same Artist");
+        System.out.println("\nSorted by Price ");
+        myGallery.sortArtworksByPrice();
+        myGallery.printGallery();
+
+        System.out.println("\nSearch: 'Mona Lisa' ");
+        System.out.println(myGallery.findArtwork("Mona Lisa"));
+
+        System.out.println("\nFilter: Van Gogh ");
+        List<Artwork> vanGoghWorks = myGallery.filterByArtist("Van Gogh");
+        for (Artwork art : vanGoghWorks) {
+            System.out.println(art);
         }
     }
 }
